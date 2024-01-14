@@ -75,6 +75,10 @@ title('Sharpe Ratio')
 sgtitle('Sort by size')
 
 %% Fama-Macbeth
+
+crsp.date = datetime(crsp.date, 'InputFormat', 'yyyy/M/d', 'Format', 'yyyy/MM/dd');
+beta.date = datetime(beta.date, 'InputFormat', 'yyyy/MM/dd', 'Format', 'yyyy/MM/dd');
+
 crsp1=innerjoin(crsp,beta,'Keys',{'permno','date'});
 
 flexvar=[crsp1.beta,crsp1.me,crsp1.beme];
